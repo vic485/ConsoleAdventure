@@ -47,9 +47,21 @@ namespace ConsoleAdventure
                     break;
                 case "grab":
                 case "take":
+                    if (command.Length < 2)
+                    {
+                        Console.WriteLine($"What are you trying to {command[0]}?");
+                        break;
+                    }
+
                     Maze.TryTakeItem(command[1]);
                     break;
                 case "drop":
+                    if (command.Length < 2)
+                    {
+                        Console.WriteLine($"What are you trying to {command[0]}?");
+                        break;
+                    }
+
                     Maze.TryDropItem(command[1]);
                     break;
                 case "look":
@@ -65,6 +77,13 @@ namespace ConsoleAdventure
                 case "leave":
                 case "quit":
                     CheckQuit();
+                    break;
+                case "help":
+                    Console.WriteLine("Movement: go/walk/run [north/east/south/west]");
+                    Console.WriteLine("Interact: grab/take/drop [item]");
+                    Console.WriteLine("          open");
+                    Console.WriteLine("Inventory: i/inv/inventory");
+                    Console.WriteLine("Quit game: exit/leave/quit");
                     break;
                 default:
                     Console.WriteLine($"I don't understand \"{command[0]}\".");
